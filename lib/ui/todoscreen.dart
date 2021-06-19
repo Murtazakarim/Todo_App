@@ -103,7 +103,7 @@ class _TodoScreenState extends State<TodoScreen> {
 
     ToDoItem noDoItem = ToDoItem(text, dateFormatted());
     int savedItemId = await db.saveItem(noDoItem);
-
+    //noDoItem.setId(savedItemId);
     ToDoItem addedItem = await db.getItem(savedItemId);
     print(addedItem.toString());
     setState(() {
@@ -156,7 +156,7 @@ class _TodoScreenState extends State<TodoScreen> {
               ToDoItem newItemUpdated = ToDoItem.fromMap({
                 "itemName": _textEditingController.text,
                 "dateCreated": dateFormatted(),
-                "id": item.id
+                "id": item.id,
               });
 
               _handleSubmittedUpdate(index, item); //redrawing the screen

@@ -11,7 +11,11 @@ class ToDoItem extends StatelessWidget {
   ToDoItem.map(dynamic obj) {
     this._itemName = obj['itemName'];
     this._dateCreated = obj['dateCreated'];
-    this._id = obj['_id'];
+    this._id = obj['id'];
+  }
+
+  void setId(int id) {
+    this._id = id;
   }
 
   // GETTER
@@ -26,7 +30,6 @@ class ToDoItem extends StatelessWidget {
     if (_id != null) {
       map['id'] = _id;
     }
-
     print(map.toString());
     return map;
   }

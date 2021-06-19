@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'package:flutter/cupertino.dart';
 import 'package:path/path.dart';
 import 'dart:async';
 import 'package:path_provider/path_provider.dart';
@@ -78,11 +77,10 @@ class DatabaseHelper {
     var result =
         await dbClient.rawQuery("SELECT * FROM $tableName WHERE id = $id");
 
-    if (result.length == 0 && result.length == null) {
-      ToDoItem? toDoItem;
-      return toDoItem!;
-    } else {
+    if (result.isNotEmpty) {
       return ToDoItem.fromMap(result.first);
+    } else {
+      throw Exception('ID $id not found');
     }
   }
 
